@@ -1,3 +1,5 @@
+package Chapter1;
+
 import java.util.Arrays;
 
 /**
@@ -16,6 +18,7 @@ import java.util.Arrays;
     So a permutation of a word can be any random assortment of characters,
     not necessarily having a meaning in the original language.
 */
+
 
 public class Permutation_1_3 {
     public static void main(String[] args) {
