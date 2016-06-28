@@ -3,37 +3,43 @@ package Chapter2;
 /**
  * Created by Youngmin on 2016. 6. 20..
  */
+
+// Singly Linked List
 public class Node {
 
-    Node next = null;
+    Node next;
     int data;
 
     public Node(int d) {
+        this.next = null;
         data = d;
     }
 
     void appendToTail(int d) {
         Node end = new Node(d);
-        Node n = this;
-        while(n.next != null) {
-            n = n.next;
+        Node current = this; // this means head node
+        while(current.next != null) { // iterate head to tail
+            current = current.next;
         }
-        n.next = end;
+        current.next = end; // append new node
+        end.next = null; // tail node's next node should be null
     }
 
-    Node deleteNode(Node head, int d) {
-        Node n = head;
+    Node deleteNode(int d) {
 
-        if(n.data == d)
-            return head.next;
+        Node current = this;
 
-        while(n.next != null) {
-            if(n.next.data == d) {
-                n.next = n.next.next;
-                return head;
-            }
-            n = n.next;
+        if(current.data == d) { // if you want to remove head node
+            return this.next; // change the head pointer
         }
-        return head;
+
+        while(current.next != null) { // while the node is not tail
+            if(current.next.data == d) {
+                current.next = current.next.next;
+                return this; // don't need to change head
+            }
+            current = current.next;
+        }
+        return this;
     }
 }
